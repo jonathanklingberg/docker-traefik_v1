@@ -20,4 +20,4 @@ shared/*
 !picard
 picard/*
 !picard/*.example
-
+!scripts

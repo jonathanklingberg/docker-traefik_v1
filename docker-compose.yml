@@ -306,11 +306,11 @@ services:
       TRANSMISSION_SPEED_LIMIT_DOWN_ENABLED: "true"
       TRANSMISSION_SPEED_LIMIT_UP: 30
       TRANSMISSION_SPEED_LIMIT_UP_ENABLED: "true"
-      TRANSMISSION_INCOMPLETE_DIR: /downloads/incomplete
+      TRANSMISSION_INCOMPLETE_DIR: /nas/jonathan/Archive/Downloads/incomplete
       TRANSMISSION_INCOMPLETE_DIR_ENABLED: "true"
       TRANSMISSION_WATCH_DIR: /downloads
       TRANSMISSION_WATCH_DIR_ENABLED: "true"
-      TRANSMISSION_DOWNLOAD_DIR: /downloads/completed
+      TRANSMISSION_DOWNLOAD_DIR: /nas/jonathan/Archive/Movies
     labels:
       traefik.enable: "true"
       traefik.backend: transmission-vpn
@@ -956,6 +956,12 @@ services:
     volumes:
       - ${USERDIR}/docker/logarr/config:/config
       - ${USERDIR}/docker/logarr/logs:/var/log/logarrlogs
+      - ${USERDIR}/docker/sonarr/logs:/var/log/sonarr/logs:ro
+      - ${USERDIR}/docker/radarr/logs:/var/log/radarr/logs:ro
+      - ${USERDIR}/docker/sabnzbd/logs:/var/log/sabnzbd/logs:ro
+      # - ${USERDIR}/docker/tautulli/logs:/var/log/tautulli/logs:ro
+      - ${USERDIR}/docker/jackett/Jackett/:/var/log/jackett:ro
+      - ${USERDIR}/docker/plexms/:/var/log/plexms/
     environment:
       TZ: ${TZ}
     labels:
